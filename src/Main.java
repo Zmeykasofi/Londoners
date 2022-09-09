@@ -28,9 +28,10 @@ public class Main {
         System.out.println("Задание №2: ");
         List<String> conscripts = persons.stream()
                 .filter(person -> person.getSex().equals(Sex.MAN))
-                .filter(person -> person.getAge() > 18)
-                .filter(person -> person.getAge() < 27)
-                .map(Person::getFamily).toList();
+                .filter(person -> person.getAge() >= 18)
+                .filter(person -> person.getAge() <= 27)
+                .map(Person::getFamily)
+                .toList();
         System.out.println("Лондонцы призывного возраста: " + conscripts);
         System.out.println();
 
@@ -41,7 +42,8 @@ public class Main {
                 .filter(person -> person.getSex().equals(Sex.WOMAN) & person.getAge() < 60 ||
                         person.getSex().equals(Sex.MAN) & person.getAge() < 65)
                 .map(Person::getFamily)
-                .sorted().toList();
+                .sorted()
+                .toList();
         System.out.println("Потенциально работоспособные жители Лондона: " + employable);
     }
 }
